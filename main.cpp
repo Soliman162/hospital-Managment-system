@@ -4,8 +4,6 @@
 #include "main.hpp"
 #include "Record.hpp"
 
-using namespace std;
-
 void Display_voidElement(Patient Copy_Data);
 
 string Doctor_ptrcharSlots[5][3] = { {"2PM","2:30PM","av"},
@@ -16,9 +14,9 @@ string Doctor_ptrcharSlots[5][3] = { {"2PM","2:30PM","av"},
 
 int main(void)
 {
-	int mode_value = 0;
-	int Pass_Word = 0;
-	int Common_Iterator = 0;
+	int mode_value(0);
+	int Pass_Word(0);
+	int Common_Iterator (0);
 	
 	Patient P_1;
 	Record Clinic_Record;
@@ -28,7 +26,7 @@ int main(void)
 
 	int P_intAge;
 	int P_intID;
-	int P_ptrcharslot = 0;;
+	int P_ptrcharslot (0);
 	
 	cout<<"1-Admin 2-User \n please Choose mode: ";
 	cin>>mode_value;
@@ -65,7 +63,6 @@ int main(void)
 							P_1.SET_voidName(P_ptrcharName);
 							P_1.SET_voidGender(P_ptrcharGender);
 							P_1.SET_voidAge(P_intAge);
-							//P_1.SET_voidSLOT(0);
 							Clinic_Record.Add_voidElement(P_1,P_intID);
 						
 							break;
@@ -215,7 +212,7 @@ void Display_voidElement(Patient Copy_Data)
 {
 	cout<<"Patient's Name: "<<Copy_Data.Get_ptrcharName()<<endl;
 	cout<<"Patient's Gender: "<<Copy_Data.GET_ptrcharGender()<<endl;
-	cout<<"Patient's Age: "<<Copy_Data.GET_intAge();
+	cout<<"Patient's Age: "<<Copy_Data.GET_intAge()<<endl;
 	if(Copy_Data.GET_intSLOT() != 0)
 	{
 		cout<<"Patient's Slot: "<<Copy_Data.GET_intSLOT()<<endl;
@@ -224,3 +221,4 @@ void Display_voidElement(Patient Copy_Data)
 		cout<<"Patient did not reserve any slots\n";
 	}
 }
+

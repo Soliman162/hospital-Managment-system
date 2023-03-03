@@ -4,10 +4,10 @@
 
 using namespace std;
 
-
 #define CORRECT_PASS_WORD   1234
-#define ADMIN_MODE  1
-#define USER_MODE   2
+
+#define ADMIN_MODE          1
+#define USER_MODE           2
 
 #define AVALIABLE_SLOT			"av"
 #define not_AVALIABLE_SLOT		"notav"
@@ -16,11 +16,11 @@ using namespace std;
 #define DISPLAY_SLOTS          2
 
 
-#define ADD_NEW			1
-#define EDIT_RECORD		2
-#define	RESERVE_SLOT 	3
-#define CANCEL_SLOT		4
-#define DISPLAY_RECORDS 5
+#define ADD_NEW			        1
+#define EDIT_RECORD		        2
+#define	RESERVE_SLOT 	        3
+#define CANCEL_SLOT		        4
+#define DISPLAY_RECORDS         5
 
 
 class Patient 
