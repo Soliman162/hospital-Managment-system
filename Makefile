@@ -1,11 +1,12 @@
-FILE = main
-CC = g++
-C_FLAGS =  -O3 -o $(FILE)
+CXX = g++
+OUT = main
+SRC_FILE = main.cpp Record.cpp Patient.cpp
+CXX_FLAGS = -O3 -o $(OUT)
 
 all:run
 
-build: $(FILE).cpp
-	$(CC) $(FILE).cpp $(C_FLAGS)  
+build: $(SRC_FILE)
+	$(CXX) $(SRC_FILE) $(CXX_FLAGS)
 
 run: build 
-	./$(FILE)
+	./$(OUT)

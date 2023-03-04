@@ -1,16 +1,16 @@
 #include <iostream>
-#include <stdlib.h>
 
-#include "main.hpp"
 #include "Record.hpp"
+#include "Patient.hpp"
+#include "main.hpp"
 
 void Display_voidElement(Patient Copy_Data);
 
-string Doctor_ptrcharSlots[5][3] = { {"2PM","2:30PM","av"},
-									 {"2:30PM","3PM","av"},
-									 {"3PM","3:30PM","av"},
-									 {"4PM","4:30PM","av"},
-									 {"4:30PM","5PM","av"} };
+string Doctor_ptrcharSlots[NUMBER_OF_SLOTS][3] = {  {"2PM","2:30PM","av"},
+													{"2:30PM","3PM","av"},
+													{"3PM","3:30PM","av"},
+													{"4PM","4:30PM","av"},
+													{"4:30PM","5PM","av"}  };
 
 int main(void)
 {
@@ -24,9 +24,9 @@ int main(void)
 	char P_ptrcharName[20];
 	char P_ptrcharGender[20];
 
-	int P_intAge;
-	int P_intID;
-	int P_ptrcharslot (0);
+	int P_intAge(0);
+	int P_intID(0);
+	int P_ptrcharslot(0);
 	
 	cout<<"1-Admin 2-User \n please Choose mode: ";
 	cin>>mode_value;
@@ -38,8 +38,10 @@ int main(void)
 				cin>>Pass_Word;
 				if(Pass_Word == CORRECT_PASS_WORD )
 				{
-					cout<<"Welcome\n";
-					cout<<"Which operation would you like to do?\n";
+					cout<<"|*******|\n";
+					cout<<"|Welcome|\n";
+					cout<<"|*******|\n";
+					cout<<"\n***Which operation would you like to do?***\n";
 					cout<<"1-Add new Patient \n";
 					cout<<"2-Edit Patient Record\n";
 					cout<<"3-Reserve a slot with the Doctor\n";
@@ -47,7 +49,7 @@ int main(void)
 					cout<<"5-Display Records.\n";
 					cout<<"please choose operation: ";
 					cin>>Common_Iterator;
-					
+
 					switch (Common_Iterator)
 					{
 						case ADD_NEW:
@@ -91,9 +93,10 @@ int main(void)
 						case RESERVE_SLOT:
 							cout<<"please enter patient's ID:";
 							cin>>P_intID;
+
 							if(Clinic_Record.Check_intExsistance(P_intID))
 							{
-									for(Common_Iterator=0;Common_Iterator<5;Common_Iterator++)
+									for(Common_Iterator=0;Common_Iterator<NUMBER_OF_SLOTS;Common_Iterator++)
 									{
 										if(Doctor_ptrcharSlots[Common_Iterator][2] == AVALIABLE_SLOT)
 										{
@@ -103,11 +106,9 @@ int main(void)
 									cout<<"please Choose Slot: ";
 									cin>>P_ptrcharslot;
 									Doctor_ptrcharSlots[P_ptrcharslot-1][2] = not_AVALIABLE_SLOT;
-
 									Clinic_Record.GET_voidData(P_intID, &P_1);
 									P_1.SET_voidSLOT(P_ptrcharslot);
 									Clinic_Record.EDIT_voidRecord(P_intID,P_1);
-
 							}else
 							{
 								cout<<"ID is not Existed\n";
@@ -120,9 +121,7 @@ int main(void)
 							{
 								Clinic_Record.GET_voidData(P_intID, &P_1);
 								P_ptrcharslot = P_1.GET_intSLOT();
-
 								Doctor_ptrcharSlots[P_ptrcharslot-1][2] = AVALIABLE_SLOT;
-
 								P_1.SET_voidSLOT(0);
 								Clinic_Record.EDIT_voidRecord(P_intID,P_1);
 							}else
@@ -133,19 +132,19 @@ int main(void)
 						case DISPLAY_RECORDS:
 							Clinic_Record.Traverse_voidRecord(Display_voidElement);
 							break;
-						
-						
 					}
 				}else
 				{
 					cout<<"Wrong Password "<<(2-Common_Iterator)<<" tries left\n";
 				}	
-		}
-		
-	}else if(mode_value==USER_MODE)
+		}	
+	}
+	else if(mode_value==USER_MODE)
 	{
-		cout<<"Welcome\n";
-		cout<<"Which operation would you like to do?\n";
+		cout<<"|*******|\n";
+		cout<<"|Welcome|\n";
+		cout<<"|*******|\n";
+		cout<<"\n***Which operation would you like to do?***\n";
 		cout<<"1-Display my Record \n";
 		cout<<"2-Display Slots \n";
 		cout<<"please choose operation: ";
