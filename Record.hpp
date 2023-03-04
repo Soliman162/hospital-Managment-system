@@ -33,6 +33,7 @@ class Record
 		void Traverse_voidRecord(void(*func)(Record_Var));	
 		void EDIT_voidRecord(int Copy_intID, Record_Var Copy_Newdata);
 		int Check_intExsistance(int Copy_intID);
+		int Get_intRecordSize(void);
 };
 
 #endif

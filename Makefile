@@ -1,7 +1,7 @@
 CXX = g++
 OUT = main
 SRC_FILE = main.cpp Record.cpp Patient.cpp
-CXX_FLAGS = -O3 -o $(OUT)
+CXX_FLAGS = -Og -o $(OUT) -ggdb3
 
 all:run
 

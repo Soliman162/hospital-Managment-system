@@ -16,7 +16,7 @@ int main(void)
 {
 	int mode_value(0);
 	int Pass_Word(0);
-	int Common_Iterator (0);
+	int Common_Iterator(0);
 	
 	Patient P_1;
 	Record Clinic_Record;
@@ -38,11 +38,11 @@ int main(void)
 				cin>>Pass_Word;
 				if(Pass_Word == CORRECT_PASS_WORD )
 				{
-					cout<<"|*******|\n";
-					cout<<"|Welcome|\n";
-					cout<<"|*******|\n";
+					cout<<"|************************|\n";
+					cout<<"|\tWelcome|\n";
+					cout<<"|************************|\n";
 					cout<<"\n***Which operation would you like to do?***\n";
-					cout<<"1-Add new Patient \n";
+					cout<<"\n1-Add new Patient \n";
 					cout<<"2-Edit Patient Record\n";
 					cout<<"3-Reserve a slot with the Doctor\n";
 					cout<<"4-Cancel Reservation\n";
@@ -130,7 +130,17 @@ int main(void)
 							}
 							break;
 						case DISPLAY_RECORDS:
-							Clinic_Record.Traverse_voidRecord(Display_voidElement);
+							if( Clinic_Record.Get_intRecordSize() > 0 )
+							{
+								Clinic_Record.Traverse_voidRecord(Display_voidElement);
+							}
+							else
+							{
+								cout<<"Record is empty"<<endl;
+							}
+							break;
+						default:
+							cout<<"Wrong Input"<<endl<<"try again"<<endl;
 							break;
 					}
 				}else
@@ -193,13 +203,10 @@ int main(void)
 							}
 						}
 					}
-					
-
 				}else
 				{
 					cout<<"ID is not Existed\n";
 				}
-
 				break;
 		}
 	}
@@ -209,15 +216,16 @@ int main(void)
 
 void Display_voidElement(Patient Copy_Data)
 {
-	cout<<"Patient's Name: "<<Copy_Data.Get_ptrcharName()<<endl;
-	cout<<"Patient's Gender: "<<Copy_Data.GET_ptrcharGender()<<endl;
-	cout<<"Patient's Age: "<<Copy_Data.GET_intAge()<<endl;
-	if(Copy_Data.GET_intSLOT() != 0)
-	{
-		cout<<"Patient's Slot: "<<Copy_Data.GET_intSLOT()<<endl;
-	}else
-	{
-		cout<<"Patient did not reserve any slots\n";
-	}
+		int Copy_slot = Copy_Data.GET_intSLOT();
+		cout<<"Patient's Name: "<<Copy_Data.Get_ptrcharName()<<endl;
+		cout<<"Patient's Gender: "<<Copy_Data.GET_ptrcharGender()<<endl;
+		cout<<"Patient's Age: "<<Copy_Data.GET_intAge()<<endl;
+		if( Copy_slot != 0)
+		{
+			cout<<"Patient's Slot: "<<Copy_slot<<endl;
+		}else
+		{
+			cout<<"Patient did not reserve any slots\n";
+		}
 }
 

@@ -5,40 +5,33 @@
 
 using namespace std;
 
-
 Rec_Node::Rec_Node():next(NULL)
 {
 	
 }
 
-Record::Record()
+Record::Record():Head(NULL),Size(0)
 {
-	Head = NULL;
-	Size = 0;
+
 }
 void Record::Add_voidElement(Record_Var Copy_Data, int Copy_intID)
 {
 		Copy_intID = Record::Uniq_voidID(Copy_intID);
 		Rec_Node *New_Node = (Rec_Node *)malloc(sizeof(Rec_Node));
-		
 		New_Node->Data = Copy_Data;
 		New_Node->ID_int = Copy_intID;
-		
 		if( Head == NULL )
 		{
 			Head = New_Node;
-
 		}else
 		{
 			Rec_Node *temp = Head;
-
 			while( temp->next != NULL )
 			{
 				temp = temp->next;
 			}
 			temp->next = New_Node;
 		}
-
 		New_Node->next = NULL; 
 		Size++;
 }
@@ -50,13 +43,11 @@ void Record::Delete_voidElement(int Copy_intID)
 	{
 		Head = Head->next;
 		free(temp);
-		
 	}else
 	{
 		Rec_Node *temp_2 ;
 		do
 		{
-			
 			if( temp->next->ID_int != Copy_intID )
 			{
 				temp_2 = temp->next;
@@ -72,7 +63,6 @@ void Record::Delete_voidElement(int Copy_intID)
 				break;
 			}
 			temp=temp->next;
-
 		}while(temp != NULL);
 	}
 }
@@ -126,7 +116,6 @@ void Record::Traverse_voidRecord(void(*func)(Record_Var))
 void Record::Clear_voidRecord(void)
 {
 		Rec_Node *temp = Head;
-		
 		while(temp!=NULL)
 		{
 			Head = Head->next;
@@ -138,7 +127,6 @@ void Record::Clear_voidRecord(void)
 void Record::EDIT_voidRecord(int Copy_intID, Record_Var Copy_Newdata)
 {
 	Rec_Node *temp = Head;
-	
 	while(temp!=NULL)
 	{
 		if(temp->ID_int == Copy_intID)
@@ -161,5 +149,9 @@ int Record::Check_intExsistance(int Copy_intID)
 		temp = temp->next;
 	}
 	return 0;
+}
 
+int Record::Get_intRecordSize(void)
+{
+	return Size ;
 }
